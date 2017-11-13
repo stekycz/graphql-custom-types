@@ -1,46 +1,27 @@
 // tslint:disable max-classes-per-file
 import {GraphQLScalarType} from "graphql";
 
-declare namespace graphqlCustomTypes {
+declare namespace graphqlExtraScalars {
 
-  type IASTParser<TResult = any> = (ast: {kind: string, value: string}) => TResult;
+  const GraphQLEmail: GraphQLScalarType;
 
-  interface IFactoryOptions {
-    name: string;
-    regex: RegExp;
-    description: string;
-    error?: string;
-  }
+  const GraphQLURL: GraphQLScalarType;
 
-  class Factory {
-    public getRegexScalar(options: IFactoryOptions): GraphQLCustomScalarType;
+  const GraphQLDateTime: GraphQLScalarType;
 
-    public getCustomScalar(name: string, description: string, parser: IASTParser): GraphQLCustomScalarType;
-  }
+  const GraphQLUUID: GraphQLScalarType;
 
-  class GraphQLCustomScalarType extends GraphQLScalarType {
-    constructor(name: string, description: string, parser: IASTParser);
-  }
-
-  const GraphQLEmail: GraphQLCustomScalarType;
-
-  const GraphQLURL: GraphQLCustomScalarType;
-
-  const GraphQLDateTime: GraphQLCustomScalarType;
-
-  const GraphQLUUID: GraphQLCustomScalarType;
-
-  class GraphQLPassword extends GraphQLCustomScalarType {
-    constructor(min?: number, max?: number, alphabet?: boolean, complexity?: {
+  class GraphQLPassword extends GraphQLScalarType {
+    constructor(min?: number, max?: number, alphabet?: string, complexity?: {
       alphaNumeric?: boolean,
       mixedCase?: boolean,
       specialChars?: boolean,
     });
   }
 
-  class GraphQLLimitedString extends GraphQLCustomScalarType {
-    constructor(min?: number, max?: number, alphabet?: boolean)
+  class GraphQLLimitedString extends GraphQLScalarType {
+    constructor(min?: number, max?: number, alphabet?: string)
   }
 }
 
-export = graphqlCustomTypes;
+export = graphqlExtraScalars;

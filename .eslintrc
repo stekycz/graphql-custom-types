@@ -4,14 +4,11 @@
   "env": {
     "browser": true,
     "node": true,
-    "es6": true,
+    "es6": true
   },
   "globals": {
     "__DEV__": true,
     "__SERVER__": true
-  },
-  "ecmaFeatures": {
-    "jsx": true
   },
   "rules": {
     // Strict mode

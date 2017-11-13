@@ -1,32 +1,36 @@
-import {
-  GraphQLString,
-  GraphQLScalarType
-} from 'graphql';
-import { GraphQLError } from 'graphql/error';
-import { Kind } from 'graphql/language';
-import { GraphQLCustomScalarType } from './types';
+// @flow
 
-export class Factory {
-  getRegexScalar(options) {
-    const error = options.error || 'Query error: ' + options.name;
+import {GraphQLScalarType} from 'graphql';
+import {createParseLiteral} from './literalParser';
 
-    const parser = function(ast) {
-      if (ast.kind !== Kind.STRING) {
-        throw new GraphQLError('Query error: Can only parse strings got a: ' + ast.kind, [ast]);
-      }
+type TypeCoercer = (value: mixed) => ?string;
 
-      var re = options.regex;
-      if(!re.test(ast.value)) {
-        throw new GraphQLError(error, [ast]);
-      }
+const createRegexScalar = (name: string, description: string, regexp: RegExp): GraphQLScalarType => {
+  const coerceType = (value: mixed): ?string => {
+    if (typeof value !== 'string') {
+      throw new TypeError(`${name} cannot represent a non string value: [${String(value)}]`);
+    }
+    if (!regexp.test(value)) {
+      throw new TypeError(`${name} cannot represent a string value: [${String(value)}]`);
+    }
 
-      return ast.value;
-    };
+    return value;
+  };
 
-    return this.getCustomScalar(options.name, options.description, parser);
-  }
+  return createStringScalar(name, description, coerceType);
+};
 
-  getCustomScalar(name, description, parser) {
-    return new GraphQLCustomScalarType(name, description, parser);
-  }
-}
+const createStringScalar = (name: string, description: string, coerceType: TypeCoercer): GraphQLScalarType => {
+  return new GraphQLScalarType({
+    name: name,
+    description: description,
+    serialize: coerceType,
+    parseValue: coerceType,
+    parseLiteral: createParseLiteral(coerceType),
+  });
+};
+
+export {
+  createRegexScalar,
+  createStringScalar,
+};

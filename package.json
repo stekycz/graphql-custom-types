@@ -43,8 +43,12 @@
   },
   "jest": {
     "roots": [
+      "<rootDir>/src",
       "<rootDir>/tests"
     ],
-    "testEnvironment": "node"
+    "testEnvironment": "node",
+    "collectCoverageFrom": [
+      "src/**/*.{js,flow}"
+    ]
   }
 }

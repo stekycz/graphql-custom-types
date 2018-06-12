@@ -13,7 +13,7 @@
   "main": "lib/index.js",
   "types": "./index.d.ts",
   "scripts": {
-    "build": "rm -rf lib && ./node_modules/.bin/babel src --out-dir lib",
+    "build": "bin/build",
     "test": "node_modules/.bin/jest -i --colors",
     "flow": "node_modules/.bin/flow check src/ --color always",
     "lint": "node_modules/.bin/eslint --color src tests",
@@ -37,6 +37,7 @@
     "eslint-plugin-flowtype": "2.49.3",
     "eslint-plugin-import": "2.12.0",
     "flow-bin": "0.74.0",
+    "flow-copy-source": "2.0.0",
     "graphql": ">=0.10.0",
     "jasmine-data-provider": "^2.2.0",
     "jest": "23.1.0"

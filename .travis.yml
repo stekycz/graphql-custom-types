@@ -1,8 +1,8 @@
 language: node_js
 node_js:
-  - "node"
-  - "lts/*"
-  - "8"
+  - 10
+  - 9
+  - 8
 before_install:
   - npm install graphql@^${GRAPHQL_VERSION}
 before_script:

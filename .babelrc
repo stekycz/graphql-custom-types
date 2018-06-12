@@ -1,4 +1,4 @@
 {
-  "presets": ["es2016-node5"],
+  "presets": ["node8"],
   "plugins": ["transform-flow-strip-types"]
 }

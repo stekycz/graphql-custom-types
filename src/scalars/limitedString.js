@@ -1,9 +1,8 @@
 // @flow
 
 import * as validators from '../validators';
-import {GraphQLScalarType} from 'graphql';
-import {Kind} from 'graphql/language';
 import {createParseLiteral} from '../literalParser';
+import {GraphQLScalarType} from 'graphql';
 
 let limitedStringCounter = 0;
 

@@ -1,10 +1,9 @@
 // @flow
 
 import * as validators from '../validators';
-import {GraphQLScalarType} from 'graphql';
-import {Kind} from 'graphql/language';
-import type {ComplexityOptions} from '../validators';
 import {createParseLiteral} from '../literalParser';
+import {GraphQLScalarType} from 'graphql';
+import type {ComplexityOptions} from '../validators';
 
 let passwordCounter = 0;
 

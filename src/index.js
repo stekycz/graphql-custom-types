@@ -1,6 +1,6 @@
 // @flow
 
-import {
+export {
   GraphQLEmail,
   GraphQLURL,
   GraphQLLimitedString,
@@ -8,12 +8,3 @@ import {
   GraphQLDateTime,
   GraphQLUUID
 } from './scalars';
-
-module.exports = {
-  GraphQLEmail,
-  GraphQLURL,
-  GraphQLLimitedString,
-  GraphQLPassword,
-  GraphQLDateTime,
-  GraphQLUUID
-};

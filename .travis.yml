@@ -3,7 +3,14 @@ node_js:
   - "node"
   - "lts/*"
   - "8"
+before_install:
+  - npm install graphql@^${GRAPHQL_VERSION}
 before_script:
   - npm run lint
   - npm run flow
-  - npm run test
+
+env:
+  - GRAPHQL_VERSION=0.10.0
+  - GRAPHQL_VERSION=0.11.0
+  - GRAPHQL_VERSION=0.12.0
+  - GRAPHQL_VERSION=0.13.0

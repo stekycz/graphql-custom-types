@@ -26,20 +26,20 @@
     "graphql": "^0.10.0 || ^0.11.0"
   },
   "devDependencies": {
-    "babel-cli": "^6.26.0",
-    "babel-core": "^6.26.0",
-    "babel-eslint": "^8.0.1",
-    "babel-jest": "^21.2.0",
-    "babel-plugin-transform-flow-strip-types": "^6.22.0",
+    "babel-cli": "6.26.0",
+    "babel-core": "6.26.3",
+    "babel-eslint": "8.2.3",
+    "babel-jest": "23.0.1",
+    "babel-plugin-transform-flow-strip-types": "6.22.0",
     "babel-preset-es2016-node5": "^1.1.2",
-    "eslint": "^4.10.0",
-    "eslint-plugin-filenames": "^1.2.0",
-    "eslint-plugin-flowtype": "^2.34.1",
-    "eslint-plugin-import": "^2.8.0",
-    "flow-bin": "^0.58.0",
-    "graphql": "^0.11.0",
+    "eslint": "4.19.1",
+    "eslint-plugin-filenames": "1.2.0",
+    "eslint-plugin-flowtype": "2.49.3",
+    "eslint-plugin-import": "2.12.0",
+    "flow-bin": "0.74.0",
+    "graphql": ">=0.10.0",
     "jasmine-data-provider": "^2.2.0",
-    "jest": "^21.2.1"
+    "jest": "23.1.0"
   },
   "jest": {
     "roots": [

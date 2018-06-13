@@ -86,7 +86,7 @@ describe('GraphQLURL', () => {
       const query = `{url(item: "${url}")}`;
       const result = await graphql(schema, query);
       expect(result).not.toHaveProperty('data.url');
-      expect(result).toHaveProperty('errors.0.message', expect.stringMatching('Expected type "URL"'));
+      expect(result).toHaveProperty('errors.0.message', expect.stringMatching('Expected type URL, found "[^"]*".'));
     });
   });
 

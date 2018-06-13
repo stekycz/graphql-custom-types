@@ -36,7 +36,7 @@ describe('GraphQLUUID', () => {
       const query = `{uuid(item: "${uuid}")}`;
       const result = await graphql(schema, query);
       expect(result).not.toHaveProperty('data.uuid');
-      expect(result).toHaveProperty('errors.0.message', expect.stringMatching('Expected type "UUID"'));
+      expect(result).toHaveProperty('errors.0.message', expect.stringMatching('Expected type UUID, found "[^"]*".'));
     });
   });
 

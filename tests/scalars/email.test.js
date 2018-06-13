@@ -40,7 +40,7 @@ describe('GraphQLEmail', () => {
       const query = `{email(item: "${email}")}`;
       const result = await graphql(schema, query);
       expect(result).not.toHaveProperty('data.email');
-      expect(result).toHaveProperty('errors.0.message', expect.stringMatching('Expected type "Email"'));
+      expect(result).toHaveProperty('errors.0.message', expect.stringMatching('Expected type Email, found "[^"]*".'));
     });
   });
 

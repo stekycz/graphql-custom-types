@@ -30,7 +30,7 @@ describe('GraphQLPassword', () => {
         const query = `{password(item: "${password}")}`;
         const result = await graphql(schema, query);
         expect(result).not.toHaveProperty('data.password');
-        expect(result).toHaveProperty('errors.0.message', expect.stringMatching('Expected type "Password"'));
+        expect(result).toHaveProperty('errors.0.message', expect.stringMatching('Expected type Password, found "[^"]*".'));
       });
     });
 
@@ -74,7 +74,7 @@ describe('GraphQLPassword', () => {
         const query = `{passwordMixedCase(item: "${password}")}`;
         const result = await graphql(schema, query);
         expect(result).not.toHaveProperty('data.passwordMixedCase');
-        expect(result).toHaveProperty('errors.0.message', expect.stringMatching('Expected type "Password2"'));
+        expect(result).toHaveProperty('errors.0.message', expect.stringMatching('Expected type Password2, found "[^"]*".'));
       });
     });
 
@@ -118,7 +118,7 @@ describe('GraphQLPassword', () => {
         const query = `{passwordSpecialChars(item: "${password}")}`;
         const result = await graphql(schema, query);
         expect(result).not.toHaveProperty('data.passwordSpecialChars');
-        expect(result).toHaveProperty('errors.0.message', expect.stringMatching('Expected type "Password3"'));
+        expect(result).toHaveProperty('errors.0.message', expect.stringMatching('Expected type Password3, found "[^"]*".'));
       });
     });
 
@@ -164,7 +164,7 @@ describe('GraphQLPassword', () => {
         const query = `{passwordAll(item: "${password}")}`;
         const result = await graphql(schema, query);
         expect(result).not.toHaveProperty('data.passwordAll');
-        expect(result).toHaveProperty('errors.0.message', expect.stringMatching('Expected type "Password4"'));
+        expect(result).toHaveProperty('errors.0.message', expect.stringMatching('Expected type Password4, found "[^"]*".'));
       });
     });
 

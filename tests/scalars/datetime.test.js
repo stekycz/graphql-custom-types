@@ -33,7 +33,7 @@ describe('GraphQLDateTime', () => {
       const query = `{date(item: "${datetime}")}`;
       const result = await graphql(schema, query);
       expect(result).not.toHaveProperty('data.date');
-      expect(result).toHaveProperty('errors.0.message', expect.stringMatching('Expected type "DateTime"'));
+      expect(result).toHaveProperty('errors.0.message', expect.stringMatching('Expected type DateTime, found "[^"]*".'));
     });
   });
 

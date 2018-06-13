@@ -20,7 +20,7 @@ describe('GraphQLLimitedString', () => {
         const query = `{limitedStringDefault(item: "${string}")}`;
         const result = await graphql(schema, query);
         expect(result).not.toHaveProperty('data.limitedStringDefault');
-        expect(result).toHaveProperty('errors.0.message', expect.stringMatching('Expected type "LimitedString"'));
+        expect(result).toHaveProperty('errors.0.message', expect.stringMatching('Expected type LimitedString, found "[^"]*".'));
       });
     });
 
@@ -56,7 +56,7 @@ describe('GraphQLLimitedString', () => {
         const query = `{limitedStringMinMax(item: "${string}")}`;
         const result = await graphql(schema, query);
         expect(result).not.toHaveProperty('data.limitedStringMinMax');
-        expect(result).toHaveProperty('errors.0.message', expect.stringMatching('Expected type "LimitedString2"'));
+        expect(result).toHaveProperty('errors.0.message', expect.stringMatching('Expected type LimitedString2, found "[^"]*".'));
       });
     });
 
@@ -95,7 +95,7 @@ describe('GraphQLLimitedString', () => {
         const query = `{limitedStringAlphabet(item: "${string}")}`;
         const result = await graphql(schema, query);
         expect(result).not.toHaveProperty('data.limitedStringAlphabet');
-        expect(result).toHaveProperty('errors.0.message', expect.stringMatching('Expected type "LimitedString3"'));
+        expect(result).toHaveProperty('errors.0.message', expect.stringMatching('Expected type LimitedString3, found "[^"]*".'));
       });
     });
 

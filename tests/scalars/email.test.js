@@ -4,6 +4,7 @@ import using from 'jasmine-data-provider';
 
 describe('GraphQLEmail', () => {
   const invalid = [
+    '',
     'plainaddress',
     '#@%^%#$@#$@#.com',
     '@example.com',

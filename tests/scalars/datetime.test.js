@@ -4,6 +4,7 @@ import using from 'jasmine-data-provider';
 
 describe('GraphQLDateTime', () => {
   const invalid = [
+    '',
     '2015-13-1',
     '2015-01-01T23:61:59',
     '2015-05-31T14:63:30',

@@ -4,6 +4,7 @@ import using from 'jasmine-data-provider';
 
 describe('GraphQLURL', () => {
   const invalid = [
+    '',
     'http://',
     'http://.',
     'http://..',

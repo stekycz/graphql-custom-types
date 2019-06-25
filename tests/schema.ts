@@ -2,6 +2,7 @@ import {DateTime} from 'luxon';
 import {
 	GraphQLDateTime,
 	GraphQLEmail,
+	GraphQLIPv4,
 	GraphQLLimitedString,
 	GraphQLPassword,
 	GraphQLURL,
@@ -115,6 +116,15 @@ const schema = new GraphQLSchema({
 				type: GraphQLUUID,
 				args: {
 					item: {type: GraphQLUUID},
+				},
+				resolve: (root, {item}) => {
+					return item;
+				},
+			},
+			ipv4: {
+				type: GraphQLIPv4,
+				args: {
+					item: {type: GraphQLIPv4},
 				},
 				resolve: (root, {item}) => {
 					return item;

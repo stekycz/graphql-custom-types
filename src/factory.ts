@@ -1,9 +1,7 @@
 import {GraphQLScalarType} from 'graphql';
-import {createParseLiteral} from './literalParser';
+import {TypeCoercer, createParseLiteral} from './literalParser';
 
-type TypeCoercer = (value: unknown) => string | void;
-
-const createStringScalar = (name: string, description: string, coerceType: TypeCoercer): GraphQLScalarType => {
+const createStringScalar = (name: string, description: string, coerceType: TypeCoercer<string>): GraphQLScalarType => {
 	return new GraphQLScalarType({
 		name: name,
 		description: description,
@@ -14,7 +12,7 @@ const createStringScalar = (name: string, description: string, coerceType: TypeC
 };
 
 const createRegexScalar = (name: string, description: string, regexp: RegExp): GraphQLScalarType => {
-	const coerceType = (value: unknown): string | void => {
+	const coerceType = (value: unknown): string => {
 		if (typeof value !== 'string') {
 			throw new TypeError(`${name} cannot represent a non string value: [${String(value)}]`);
 		}

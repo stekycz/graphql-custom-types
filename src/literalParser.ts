@@ -1,7 +1,9 @@
 import {Kind, ValueNode} from 'graphql/language';
 
-const createParseLiteral = (coerceType: (value: unknown) => string | void): (ast: ValueNode) => string | void => {
-	return (ast: ValueNode): string | void => {
+export type TypeCoercer<T> = (value: unknown) => T;
+
+const createParseLiteral = <T>(coerceType: TypeCoercer<T>): (ast: ValueNode) => T | void => {
+	return (ast: ValueNode): T | void => {
 		if (ast.kind !== Kind.STRING) {
 			return undefined;
 		}

@@ -29,7 +29,7 @@ class GraphQLPassword extends GraphQLScalarType {
 			}
 		}
 
-		const coerceType = (value: unknown): string | void => {
+		const coerceType = (value: unknown): string => {
 			if (typeof value !== 'string') {
 				throw new TypeError(`${name} cannot represent a non string value: [${String(value)}]`);
 			}

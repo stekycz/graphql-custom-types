@@ -3,7 +3,7 @@ import * as factory from '../factory';
 const GraphQLDateTime = factory.createStringScalar(
 	'DateTime',
 	'The DateTime scalar type represents date time strings complying to ISO-8601.',
-	(value: unknown): string | void => {
+	(value: unknown): string => {
 		if (typeof value !== 'string') {
 			throw new TypeError(`DateTime cannot represent a non string value: [${String(value)}]`);
 		}

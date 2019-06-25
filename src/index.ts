@@ -1,8 +1,1 @@
-export {
-	GraphQLEmail,
-	GraphQLURL,
-	GraphQLLimitedString,
-	GraphQLPassword,
-	GraphQLDateTime,
-	GraphQLUUID,
-} from './scalars';
+export * from './scalars';

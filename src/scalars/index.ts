@@ -1,15 +1,6 @@
-import {GraphQLDateTime} from './datetime';
-import {GraphQLEmail} from './email';
-import {GraphQLLimitedString} from './limitedString';
-import {GraphQLPassword} from './password';
-import {GraphQLURL} from './url';
-import {GraphQLUUID} from './uuid';
-
-export {
-	GraphQLDateTime,
-	GraphQLEmail,
-	GraphQLLimitedString,
-	GraphQLPassword,
-	GraphQLURL,
-	GraphQLUUID,
-};
+export {GraphQLDateTime} from './datetime';
+export {GraphQLEmail} from './email';
+export {GraphQLLimitedString} from './limitedString';
+export {GraphQLPassword} from './password';
+export {GraphQLURL} from './url';
+export {GraphQLUUID} from './uuid';

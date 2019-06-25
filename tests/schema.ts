@@ -4,6 +4,7 @@ import {
 	GraphQLEmail,
 	GraphQLIPv4,
 	GraphQLLimitedString,
+	GraphQLMacAddress,
 	GraphQLPassword,
 	GraphQLURL,
 	GraphQLUUID,
@@ -125,6 +126,15 @@ const schema = new GraphQLSchema({
 				type: GraphQLIPv4,
 				args: {
 					item: {type: GraphQLIPv4},
+				},
+				resolve: (root, {item}) => {
+					return item;
+				},
+			},
+			macAddress: {
+				type: GraphQLMacAddress,
+				args: {
+					item: {type: GraphQLMacAddress},
 				},
 				resolve: (root, {item}) => {
 					return item;

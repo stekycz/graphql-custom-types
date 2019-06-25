@@ -3,5 +3,9 @@
 set -e
 
 rm -rf lib
-node_modules/.bin/babel src --out-dir=lib --copy-files
-node_modules/.bin/flow-copy-source -v src/ lib/
+node_modules/.bin/tsc --declaration
+
+for filename in $(find lib -name '*.d.ts'); do
+    output_filename=`echo $filename | sed s/d.ts/flow.js/`
+    ./node_modules/.bin/flowgen $filename -o $output_filename
+done

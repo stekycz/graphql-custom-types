@@ -1,9 +1,5 @@
-bin
-node_modules
-src
-tests
-.babelrc
-.eslintrc
-.flowconfig
-.gitignore
-.travis.yml
+**/*
+!lib/**/*
+!package.json
+!LICENSE.md
+!README.md

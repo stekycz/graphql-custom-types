@@ -1,4 +1,0 @@
-{
-  "presets": ["node8"],
-  "plugins": ["transform-flow-strip-types"]
-}

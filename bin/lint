@@ -1,0 +1,5 @@
+#!/bin/sh
+
+set -e
+
+node_modules/.bin/eslint --color --ext .ts --ext .js src/ tests/ $@

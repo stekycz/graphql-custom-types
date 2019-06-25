@@ -1,15 +1,19 @@
 language: node_js
 node_js:
-  - 10
-  - 9
-  - 8
-before_install:
-  - npm install graphql@^${GRAPHQL_VERSION}
+  - node
+  - lts/*
+  - "12"
+  - "11"
+  - "10"
+  - "9"
+  - "8"
+  - "8.10.0"
 install:
   - npm install
+  - npm install graphql@${GRAPHQL_VERSION}
 before_script:
   - npm run lint
-  - npm run flow
+  - npm run typescript
 
 env:
-  - GRAPHQL_VERSION=0.13.0
+  - GRAPHQL_VERSION=14.3.1

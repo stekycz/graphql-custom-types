@@ -6,49 +6,65 @@
   "keywords": [
     "GraphQL",
     "GraphQL types",
-    "express-graphql"
+    "GraphQL scalar types"
   ],
   "author": "Martin Štekl <martin.stekl@gmail.com>",
   "license": "MIT",
   "main": "lib/index.js",
-  "types": "./index.d.ts",
+  "types": "lib/index.d.ts",
   "scripts": {
     "build": "bin/build",
-    "test": "node_modules/.bin/jest -i --colors",
-    "flow": "node_modules/.bin/flow check src/ --color always",
-    "lint": "node_modules/.bin/eslint --color src tests",
-    "prepare": "npm run build"
+    "lint": "bin/lint || true",
+    "typescript": "bin/typescript || true",
+    "test": "bin/jest",
+    "check-all": "bin/check-all || true",
+    "prepare": "bin/build"
   },
   "engines": {
-    "node": ">= 8.0.0"
+    "node": ">=8.10.0"
   },
   "peerDependencies": {
-    "graphql": ">=0.13.0 <1.0.0"
+    "graphql": ">=14.3.1"
   },
   "devDependencies": {
-    "babel-cli": "6.26.0",
-    "babel-core": "6.26.3",
-    "babel-eslint": "8.2.3",
-    "babel-jest": "23.0.1",
-    "babel-plugin-transform-flow-strip-types": "6.22.0",
-    "babel-preset-node8": "1.2.0",
-    "eslint": "4.19.1",
-    "eslint-plugin-filenames": "1.2.0",
-    "eslint-plugin-flowtype": "2.49.3",
-    "eslint-plugin-import": "2.12.0",
-    "flow-bin": "0.74.0",
-    "flow-copy-source": "2.0.0",
-    "jasmine-data-provider": "^2.2.0",
-    "jest": "23.1.0"
+    "@cookielab.io/eslint-config-server": "1.0.0",
+    "@types/graphql": "14.2.2",
+    "@types/jest": "24.0.15",
+    "@types/node": "12.0.10",
+    "@typescript-eslint/eslint-plugin": "1.11.0",
+    "@typescript-eslint/parser": "1.11.0",
+    "eslint": "6.0.0",
+    "eslint-plugin-filenames": "1.3.2",
+    "eslint-plugin-import": "2.17.3",
+    "flowgen": "1.9.0",
+    "graphql": "14.3.1",
+    "jest": "24.8.0",
+    "ts-jest": "24.0.2",
+    "typescript": "3.5.2"
   },
   "jest": {
     "roots": [
       "<rootDir>/src",
       "<rootDir>/tests"
     ],
+    "globals": {
+      "ts-jest": {
+        "tsConfig": "tsconfig.json"
+      }
+    },
+    "transform": {
+      "^.+\\.ts$": "ts-jest"
+    },
     "testEnvironment": "node",
+    "testMatch": [
+      "**/tests/**/*.test.(ts|js)"
+    ],
     "collectCoverageFrom": [
-      "src/**/*.{js,flow}"
+      "src/**/*.{js,ts}"
+    ],
+    "moduleFileExtensions": [
+      "ts",
+      "js"
     ]
   }
 }

@@ -9,11 +9,13 @@ Let me give you an overview of the available types. If you need more detail abou
 
 The primitive types, aka everything that may be represented as a string. The ones with parameters you need to instantiate with *new* and pass according parameters, the others may be used as are.
 
-* `GraphQLEmail`
-* `GraphQLURL`
 * `GraphQLDateTime`
+* `GraphQLEmail`
+* `GraphQLIPv4`
 * `GraphQLLimitedString(min, max, alphabet)`
+* `GraphQLMacAddress`
 * `GraphQLPassword(min, max, alphabet, complexity)`
+* `GraphQLURL`
 * `GraphQLUUID`
 
 `complexity` options:
@@ -22,7 +24,7 @@ The primitive types, aka everything that may be represented as a string. The one
 {
   alphaNumeric: false,
   mixedCase: false,
-  specialChars: false
+  specialChars: false,
 }
 ```
 
@@ -42,18 +44,31 @@ yarn add graphql graphql-extra-scalars
 
 ## Usage
 
-```javascript
+Use it in your `GraphQLSchema` as you would use any other type.
+
+```typescript
 import {
-  GraphQLEmail,
-  GraphQLURL,
   GraphQLDateTime,
+  GraphQLEmail,
+  GraphQLIPv4,
   GraphQLLimitedString,
+  GraphQLMacAddress,
   GraphQLPassword,
+  GraphQLURL,
   GraphQLUUID
 } from 'graphql-extra-scalars';
-```
+import {DocumentNode} from 'graphql';
+import {gql} from 'graphql-tag';
 
-And use it in your `GraphQLSchema` as you would use any other type.
+const schema: DocumentNode = gql`
+  scalar DateTime
+`;
+
+const resolvers = {
+  DateTime: GraphQLDateTime,
+  Password: new GraphQLPassword(8)
+};
+```
 
 ## Development
 

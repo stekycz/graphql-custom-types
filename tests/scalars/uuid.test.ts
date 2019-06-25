@@ -43,7 +43,7 @@ describe('GraphQLUUID', () => {
 		it(`succeeds for "${uuid}"`, async () => {
 			const query = `{uuid(item: "${uuid}")}`;
 			const result = await graphql(schema, query);
-			expect(result).toHaveProperty('data.uuid', uuid);
+			expect(result).toHaveProperty('data.uuid', uuid.toLowerCase());
 			expect(result).not.toHaveProperty('errors');
 		});
 	});

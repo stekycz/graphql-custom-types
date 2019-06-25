@@ -1,11 +1,20 @@
-import * as factory from '../factory';
+import {GraphQLScalarType} from 'graphql';
+import {createParseLiteral} from '../literalParser';
+import {createRegexpTypeCoercer} from '../regexpTypeCoercer';
 
-const GraphQLUUID = factory.createRegexScalar(
-	'UUID',
-	'The UUID scalar type represents a UUID.',
-	// @see https://github.com/chriso/validator.js/blob/master/src/lib/isUUID.js#L7
-	/^[0-9A-F]{8}-[0-9A-F]{4}-[0-9A-F]{4}-[0-9A-F]{4}-[0-9A-F]{12}$/ui
-);
+const coerceType = createRegexpTypeCoercer('UUID', /^[0-9A-F]{8}-[0-9A-F]{4}-[0-9A-F]{4}-[0-9A-F]{4}-[0-9A-F]{12}$/ui);
+
+const GraphQLUUID = new GraphQLScalarType({
+	name: 'UUID',
+	description: 'The UUID scalar type represents a UUID.',
+	serialize: (value: unknown): string => {
+		const coercedValue = coerceType(value);
+
+		return coercedValue.toLowerCase();
+	},
+	parseValue: coerceType,
+	parseLiteral: createParseLiteral(coerceType),
+});
 
 export {
 	GraphQLUUID,

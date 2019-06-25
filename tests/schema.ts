@@ -109,7 +109,7 @@ const schema = new GraphQLSchema({
 				},
 			},
 			uuid: {
-				type: GraphQLString,
+				type: GraphQLUUID,
 				args: {
 					item: {type: GraphQLUUID},
 				},

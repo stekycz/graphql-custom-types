@@ -1,6 +1,6 @@
 {
   "name": "graphql-extra-scalars",
-  "version": "1.0.0",
+  "version": "2.0.0",
   "description": "Collection of extra GraphQL scalar types like Email, URL, Password and more",
   "keywords": [
     "GraphQL",

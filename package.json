@@ -26,6 +26,10 @@
   "engines": {
     "node": ">=8.10.0"
   },
+  "dependencies": {
+    "@types/luxon": "1.15.1",
+    "luxon": "^1.16.0"
+  },
   "peerDependencies": {
     "graphql": ">=14.3.1"
   },

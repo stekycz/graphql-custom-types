@@ -1,5 +1,8 @@
+import {DateTime, Settings} from 'luxon';
 import {graphql} from 'graphql';
 import {schema} from '../schema';
+
+Settings.defaultZoneName = 'utc';
 
 describe('GraphQLDateTime', () => {
 	const invalid = [
@@ -7,15 +10,15 @@ describe('GraphQLDateTime', () => {
 		'2015-13-1',
 		'2015-01-01T23:61:59',
 		'2015-05-31T14:63:30',
+		'123456',
+		'2015-1',
+		'2015-1-1',
+		'2015-5-31',
 	];
 
 	const valid = [
 		'2015',
 		'9999',
-		'123456',
-		'2015-1',
-		'2015-1-1',
-		'2015-5-31',
 		'2015-01-01',
 		'2015-05-31',
 		'2015-05-31T14:23',
@@ -30,6 +33,9 @@ describe('GraphQLDateTime', () => {
 
 	invalid.forEach((datetime) => {
 		it(`fails for "${datetime}"`, async () => {
+			const expectedResult = DateTime.fromISO(datetime);
+			expect(expectedResult.isValid).toBeFalsy();
+
 			const query = `{date(item: "${datetime}")}`;
 			const result = await graphql(schema, query);
 			expect(result).not.toHaveProperty('data.date');
@@ -39,9 +45,12 @@ describe('GraphQLDateTime', () => {
 
 	valid.forEach((datetime) => {
 		it(`succeeds for "${datetime}"`, async () => {
+			const expectedResult = DateTime.fromISO(datetime);
+			expect(expectedResult.isValid).toBeTruthy();
+
 			const query = `{date(item: "${datetime}")}`;
 			const result = await graphql(schema, query);
-			expect(result).toHaveProperty('data.date', datetime);
+			expect(result).toHaveProperty('data.date', expectedResult.toISO());
 			expect(result).not.toHaveProperty('errors');
 		});
 	});

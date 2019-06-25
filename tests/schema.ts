@@ -1,3 +1,4 @@
+import {DateTime} from 'luxon';
 import {
 	GraphQLDateTime,
 	GraphQLEmail,
@@ -100,11 +101,13 @@ const schema = new GraphQLSchema({
 				},
 			},
 			date: {
-				type: GraphQLString,
+				type: GraphQLDateTime,
 				args: {
 					item: {type: GraphQLDateTime},
 				},
 				resolve: (root, {item}) => {
+					expect(item).toBeInstanceOf(DateTime);
+
 					return item;
 				},
 			},

@@ -1,6 +1,5 @@
 {
   "name": "graphql-extra-scalars",
-  "repository": "stekycz/graphql-extra-scalars",
   "version": "1.0.0",
   "description": "Collection of extra GraphQL scalar types like Email, URL, Password and more",
   "keywords": [
@@ -10,6 +9,10 @@
   ],
   "author": "Martin Štekl <martin.stekl@gmail.com>",
   "license": "MIT",
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/stekycz/graphql-extra-scalars.git"
+  },
   "main": "lib/index.js",
   "types": "lib/index.d.ts",
   "scripts": {

@@ -34,4 +34,11 @@ describe('GraphQLMacAddress', () => {
 			expect(result).not.toHaveProperty('errors');
 		});
 	});
+
+	it('succeeds for NULL', async () => {
+		const query = '{macAddress(item: null)}';
+		const result = await graphql(schema, query);
+		expect(result).toHaveProperty('data.macAddress', null);
+		expect(result).not.toHaveProperty('errors');
+	});
 });

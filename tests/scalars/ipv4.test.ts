@@ -36,4 +36,11 @@ describe('GraphQLIPv4', () => {
 			expect(result).not.toHaveProperty('errors');
 		});
 	});
+
+	it('succeeds for NULL', async () => {
+		const query = '{ipv4(item: null)}';
+		const result = await graphql(schema, query);
+		expect(result).toHaveProperty('data.ipv4', null);
+		expect(result).not.toHaveProperty('errors');
+	});
 });

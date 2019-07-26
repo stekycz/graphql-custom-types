@@ -31,6 +31,13 @@ describe('GraphQLLimitedString', () => {
 				expect(result).not.toHaveProperty('errors');
 			});
 		});
+
+		it('succeeds for NULL', async () => {
+			const query = '{limitedStringDefault(item: null)}';
+			const result = await graphql(schema, query);
+			expect(result).toHaveProperty('data.limitedStringDefault', null);
+			expect(result).not.toHaveProperty('errors');
+		});
 	});
 
 	describe('min = 3, max = 10', () => {
@@ -66,6 +73,13 @@ describe('GraphQLLimitedString', () => {
 				expect(result).toHaveProperty('data.limitedStringMinMax', string);
 				expect(result).not.toHaveProperty('errors');
 			});
+		});
+
+		it('succeeds for NULL', async () => {
+			const query = '{limitedStringMinMax(item: null)}';
+			const result = await graphql(schema, query);
+			expect(result).toHaveProperty('data.limitedStringMinMax', null);
+			expect(result).not.toHaveProperty('errors');
 		});
 	});
 
@@ -105,6 +119,13 @@ describe('GraphQLLimitedString', () => {
 				expect(result).toHaveProperty('data.limitedStringAlphabet', string);
 				expect(result).not.toHaveProperty('errors');
 			});
+		});
+
+		it('succeeds for NULL', async () => {
+			const query = '{limitedStringAlphabet(item: null)}';
+			const result = await graphql(schema, query);
+			expect(result).toHaveProperty('data.limitedStringAlphabet', null);
+			expect(result).not.toHaveProperty('errors');
 		});
 	});
 });

@@ -47,4 +47,11 @@ describe('GraphQLUUID', () => {
 			expect(result).not.toHaveProperty('errors');
 		});
 	});
+
+	it('succeeds for NULL', async () => {
+		const query = '{uuid(item: null)}';
+		const result = await graphql(schema, query);
+		expect(result).toHaveProperty('data.uuid', null);
+		expect(result).not.toHaveProperty('errors');
+	});
 });

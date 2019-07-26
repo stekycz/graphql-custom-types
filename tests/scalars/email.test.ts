@@ -52,4 +52,11 @@ describe('GraphQLEmail', () => {
 			expect(result).not.toHaveProperty('errors');
 		});
 	});
+
+	it('succeeds for NULL', async () => {
+		const query = '{email(item: null)}';
+		const result = await graphql(schema, query);
+		expect(result).toHaveProperty('data.email', null);
+		expect(result).not.toHaveProperty('errors');
+	});
 });

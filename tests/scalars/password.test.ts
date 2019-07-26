@@ -41,6 +41,13 @@ describe('GraphQLPassword', () => {
 				expect(result).not.toHaveProperty('errors');
 			});
 		});
+
+		it('succeeds for NULL', async () => {
+			const query = '{password(item: null)}';
+			const result = await graphql(schema, query);
+			expect(result).toHaveProperty('data.password', null);
+			expect(result).not.toHaveProperty('errors');
+		});
 	});
 
 	describe('mixedCase', () => {
@@ -85,6 +92,13 @@ describe('GraphQLPassword', () => {
 				expect(result).not.toHaveProperty('errors');
 			});
 		});
+
+		it('succeeds for NULL', async () => {
+			const query = '{passwordMixedCase(item: null)}';
+			const result = await graphql(schema, query);
+			expect(result).toHaveProperty('data.passwordMixedCase', null);
+			expect(result).not.toHaveProperty('errors');
+		});
 	});
 
 	describe('specialChars', () => {
@@ -128,6 +142,13 @@ describe('GraphQLPassword', () => {
 				expect(result).toHaveProperty('data.passwordSpecialChars', password);
 				expect(result).not.toHaveProperty('errors');
 			});
+		});
+
+		it('succeeds for NULL', async () => {
+			const query = '{passwordSpecialChars(item: null)}';
+			const result = await graphql(schema, query);
+			expect(result).toHaveProperty('data.passwordSpecialChars', null);
+			expect(result).not.toHaveProperty('errors');
 		});
 	});
 
@@ -174,6 +195,13 @@ describe('GraphQLPassword', () => {
 				expect(result).toHaveProperty('data.passwordAll', password);
 				expect(result).not.toHaveProperty('errors');
 			});
+		});
+
+		it('succeeds for NULL', async () => {
+			const query = '{passwordAll(item: null)}';
+			const result = await graphql(schema, query);
+			expect(result).toHaveProperty('data.passwordAll', null);
+			expect(result).not.toHaveProperty('errors');
 		});
 	});
 });

@@ -98,4 +98,11 @@ describe('GraphQLURL', () => {
 			expect(result).not.toHaveProperty('errors');
 		});
 	});
+
+	it('succeeds for NULL', async () => {
+		const query = '{url(item: null)}';
+		const result = await graphql(schema, query);
+		expect(result).toHaveProperty('data.url', null);
+		expect(result).not.toHaveProperty('errors');
+	});
 });

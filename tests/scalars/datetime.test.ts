@@ -54,4 +54,11 @@ describe('GraphQLDateTime', () => {
 			expect(result).not.toHaveProperty('errors');
 		});
 	});
+
+	it('succeeds for NULL', async () => {
+		const query = '{date(item: null)}';
+		const result = await graphql(schema, query);
+		expect(result).toHaveProperty('data.date', null);
+		expect(result).not.toHaveProperty('errors');
+	});
 });

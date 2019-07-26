@@ -19,7 +19,7 @@ const GraphQLDateTime = new GraphQLScalarType({
 	name: 'DateTime',
 	description: 'The DateTime scalar type represents date time strings complying to ISO-8601.',
 	serialize: (value: unknown): string => {
-		if (!(value instanceof DateTime)) {
+		if (!DateTime.isDateTime(value)) {
 			throw new TypeError(`DateTime cannot represent a non DateTime value: [${String(typeof value)}] given`);
 		}
 

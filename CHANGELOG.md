@@ -1,5 +1,10 @@
 # Changelog
 
+## [2.1.0] - 2019-07-26
+- Fixed DateTime type condition for validation `luxon` types. It caused issues in projects with multiple versions of `luxon` is installed.
+- Added tests for nullable values
+- Updated dependencies
+
 ## [2.0.0] - 2019-06-25
 - Refactored to Typescript
 - Updated dependencies and minimal GraphQL version
